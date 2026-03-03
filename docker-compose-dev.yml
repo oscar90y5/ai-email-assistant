@@ -1,5 +1,9 @@
 services:
   web:
+    build:
+      context: ./django
+      args:
+        PYTHON_VERSION: ${PYTHON_VERSION}
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./django/src:/app
@@ -7,9 +11,17 @@ services:
       - "8000:8000"
 
   worker:
+    build:
+      context: ./django
+      args:
+        PYTHON_VERSION: ${PYTHON_VERSION}
     volumes:
       - ./django/src:/app
 
   beat:
+    build:
+      context: ./django
+      args:
+        PYTHON_VERSION: ${PYTHON_VERSION}
     volumes:
       - ./django/src:/app

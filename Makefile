@@ -2,7 +2,14 @@ include .env.common
 -include .env.local
 export
 
+DOCKER_USER = osferna
+IMAGE = $(DOCKER_USER)/ai-email-assistant
+
 COMPOSE_FILES = -f docker-compose.yml -f docker-compose-dev.yml
+
+build:
+	docker build --build-arg PYTHON_VERSION=$(PYTHON_VERSION) -t $(IMAGE):latest ./django
+	docker push $(IMAGE):latest
 
 up:
 	docker compose $(COMPOSE_FILES) up --build -d

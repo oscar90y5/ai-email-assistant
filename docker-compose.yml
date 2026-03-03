@@ -18,10 +18,7 @@ services:
     restart: unless-stopped
 
   web:
-    build:
-      context: ./django
-      args:
-        PYTHON_VERSION: ${PYTHON_VERSION}
+    image: osferna/ai-email-assistant:latest
     command: daphne -b 0.0.0.0 -p 8000 config.asgi:application
     environment:
       SECRET_KEY: ${SECRET_KEY}
@@ -42,10 +39,7 @@ services:
     restart: unless-stopped
 
   worker:
-    build:
-      context: ./django
-      args:
-        PYTHON_VERSION: ${PYTHON_VERSION}
+    image: osferna/ai-email-assistant:latest
     command: celery -A config worker -l info
     environment:
       SECRET_KEY: ${SECRET_KEY}
@@ -65,10 +59,7 @@ services:
     restart: unless-stopped
 
   beat:
-    build:
-      context: ./django
-      args:
-        PYTHON_VERSION: ${PYTHON_VERSION}
+    image: osferna/ai-email-assistant:latest
     command: celery -A config beat -l info
     environment:
       SECRET_KEY: ${SECRET_KEY}
