@@ -1,0 +1,33 @@
+# Environment files
+.env.local
+.env.prod
+
+# Gmail OAuth tokens
+token.json
+credentials.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+
+# Django
+staticfiles/
+
+# Celery
+celerybeat-schedule
+celerybeat-schedule-shm
+celerybeat-schedule-wal
+
+# Docker
+.docker/
+
+# IDE
+.venv/
+.idea/
+.vscode/
+*.swp
