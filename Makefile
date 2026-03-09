@@ -23,6 +23,11 @@ up:
 down:
 	docker compose $(COMPOSE_FILES) down
 
+downup: down up
+
+makemigrations:
+	docker compose $(COMPOSE_FILES) exec web python manage.py makemigrations
+
 migrate:
 	docker compose $(COMPOSE_FILES) exec web python manage.py migrate
 
@@ -33,4 +38,7 @@ logs:
 	docker compose $(COMPOSE_FILES) logs -f
 
 shell:
+	docker compose $(COMPOSE_FILES) exec web sh
+
+django-shell:
 	docker compose $(COMPOSE_FILES) exec web python manage.py shell
