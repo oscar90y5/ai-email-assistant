@@ -28,6 +28,7 @@ celerybeat-schedule-wal
 
 # IDE
 .venv/
+.venv-oauth/
 .idea/
 .vscode/
 *.swp

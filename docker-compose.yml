@@ -41,6 +41,8 @@ services:
   worker:
     image: osferna/ai-email-assistant:latest
     command: celery -A config worker -l info
+    volumes:
+      - ./token.json:/run/secrets/token.json:ro
     environment:
       SECRET_KEY: ${SECRET_KEY}
       DEBUG: ${DEBUG}

@@ -7,6 +7,12 @@ IMAGE = $(DOCKER_USER)/ai-email-assistant
 
 COMPOSE_FILES = -f docker-compose.yml -f docker-compose-dev.yml
 
+## Gmail OAuth
+## Genera token.json a partir de credentials.json (requiere navegador).
+## Uso: make gmail-token
+gmail-token:
+	python3 -m venv .venv-oauth && .venv-oauth/bin/pip install -q google-auth-oauthlib && .venv-oauth/bin/python generate_token.py
+
 build:
 	docker build --build-arg PYTHON_VERSION=$(PYTHON_VERSION) -t $(IMAGE):latest ./django
 	docker push $(IMAGE):latest
